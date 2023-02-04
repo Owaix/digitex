@@ -1,0 +1,98 @@
+﻿@model CoreSM.Models.SalesCategory
+
+<style>
+    @@media all and (min-width:321px) and (max-width: 480px) {
+        label {
+            font-size: 13px;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">INVOICE ENTRY</div>
+                <div class="card-body">
+                    <form method="post" action="/AddTax">
+                        @*<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Invoice">*@
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="control-label mb-1">Sale Type</label>
+                                <div class="input-group">
+                                    <select asp-for="Type" class="form-control SaleType">
+                                        <option value="0">Please select</option>
+                                        <option value="goods">Goods</option>
+                                        <option value="services">Services</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <input type="hidden" asp-for="ID" />
+                                <label class="control-label mb-1">Payer Type</label>
+                                <div class="input-group">
+                                    <select asp-for="PayerType" class="form-control SaleType">
+                                        <option value="0">Please select</option>
+                                        <option value="ind">Individual</option>
+                                        <option value="cor">Corporation</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="Category" class="control-label mb-1">Category</label>
+                                    <input asp-for="Category" type="text" class="form-control cc-exp" data-val="true" data-val-required="Please enter the card expiration"
+                                           data-val-cc-exp="Please enter a valid month and year" placeholder=""
+                                           autocomplete="cc-exp">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="TaxRate" class="control-label mb-1">Tax Rate(%)</label>
+                                    <input asp-for="TaxRate" type="text" class="form-control cc-exp" data-val="true" data-val-required="Please enter the card expiration"
+                                           data-val-cc-exp="Please enter a valid month and year" placeholder=""
+                                           autocomplete="cc-exp">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <input id="payment-button" value="Save" type="submit" class="btn btn-lg btn-info btn-block" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="@ViewData["saved"]" id="hdnSaved" />
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('form').submit(function (e) {
+            if ($('#Category').val() == '') {
+                $('#Category').attr('style', 'border-color:red');
+                e.preventDefault();
+            } else {
+                $('#Category').attr('style', '');
+            }
+
+            if ($('#TaxRate').val() == '') {
+                $('#TaxRate').attr('style', 'border-color:red');
+                e.preventDefault();
+            } else {
+                $('#TaxRate').attr('style', '');
+            }
+        })
+
+        if ($('#hdnSaved').val() == 'saved') {
+            alert("Invoice Has been Saved Successfully!");
+            $('#hdnSaved').val('');
+        }
+    });
+</script>
+
+
+

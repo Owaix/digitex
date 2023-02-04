@@ -1,0 +1,213 @@
+﻿@model CoreSM.Models.Invoice
+
+<style>
+    @@media all and (min-width:321px) and (max-width: 480px) {
+        label {
+            font-size: 13px;
+        }
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">INVOICE ENTRY</div>
+                <div class="card-body">
+                    <form method="post" action="/Invoice">
+                        @*<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Invoice">*@
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <input type="hidden" asp-for="ID" />
+                                    <label asp-for="InvoiceDate" class="control-label mb-1">Invoice Date</label>
+                                    <input asp-for="InvoiceDate" type="text" class="form-control cc-exp datepicker" data-val="true" data-val-required="Please enter the card expiration"
+                                           data-val-cc-exp="Please enter a valid month and year" placeholder="MM / YY"
+                                           autocomplete="cc-exp">                                    
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="CNIC" class="control-label mb-1">Reg # / CNIC</label>
+                                    <input asp-for="CNIC" type="text" class="form-control cc-exp" data-val="true" data-val-required="Please enter the card expiration"
+                                           data-val-cc-exp="Please enter a valid month and year" placeholder=""
+                                           autocomplete="cc-exp">                                   
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label asp-for="SaleType" class="control-label mb-1">Sale Type</label>
+                                <div class="input-group">
+                                    <select asp-for="SaleType" class="form-control SaleType">
+                                        <option value="0">Please select</option>
+                                        <option value="goods">Goods</option>
+                                        <option value="services">Services</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="x_card_code" class="control-label mb-1">Payer Type</label>
+                                <div class="input-group">
+                                    <select asp-for="TaxPayerType" class="form-control SaleType">
+                                        <option value="0">Please select</option>
+                                        <option value="ind">Individual</option>
+                                        <option value="cor">Corporation</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <input type="hidden" asp-for="SaleCategoryID" />
+                                <label for="x_card_code" class="control-label mb-1">Sale Category</label>
+                                <div class="input-group">
+                                    <select id="ddlsalesCategory" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="TaxRate" class="control-label mb-1">Tax Rate</label>
+                                    <input asp-for="TaxRate" type="text" class="form-control cc-exp" data-val="true" data-val-required="Please enter the card expiration"
+                                           data-val-cc-exp="Please enter a valid month and year" placeholder=""
+                                           autocomplete="cc-exp">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label asp-for="TaxWithheld" class="control-label mb-1">Tax Withheld</label>
+                                <div class="input-group">
+                                    <select asp-for="TaxWithheld" class="form-control">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="TaxAmount" class="control-label mb-1">Tax Amount</label>
+                                    <input asp-for="TaxAmount" type="text" class="form-control cc-exp" data-val="true" data-val-required="Please enter the card expiration"
+                                           data-val-cc-exp="Please enter a valid month and year" placeholder=""
+                                           autocomplete="cc-exp">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="cc-exp" class="control-label mb-1">Total</label>
+                                    <input id="total" type="text" class="form-control cc-exp" data-val="true" data-val-required="Please enter the card expiration"
+                                           data-val-cc-exp="Please enter a valid month and year" placeholder=""
+                                           autocomplete="cc-exp">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <input id="payment-button" type="submit" value="Save" class="btn btn-lg btn-info btn-block" />
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="@ViewData["saved"]" id="hdnSaved" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('form').submit(function (e) {
+            if ($('#InvoiceDate').val() == '') {
+                $('#InvoiceDate').attr('style', 'border-color:red');
+                e.preventDefault();
+            } else {
+                $('#InvoiceDate').attr('style', '');
+            }
+
+            if ($('#CNIC').val() == '') {
+                $('#CNIC').attr('style', 'border-color:red');
+                e.preventDefault();
+            } else {
+                $('#CNIC').attr('style', '');
+            }
+
+            if ($('#ddlsalesCategory').val() == '') {
+                $('#ddlsalesCategory').attr('style', 'border-color:red');
+                e.preventDefault();
+            } else {
+                $('#ddlsalesCategory').attr('style', '');
+            }
+
+            if ($('#TaxAmount').val() == '') {
+                $('#TaxAmount').attr('style', 'border-color:red');
+                e.preventDefault();
+            } else {
+                $('#TaxAmount').attr('style', '');
+            }
+        })
+
+        $('.datepicker').datepicker({
+            "setDate": new Date(),
+            "autoclose": true
+        });
+        if ($('#hdnSaved').val() == 'saved') {
+            alert("Invoice Has been Saved Successfully!");
+            $('#hdnSaved').val('');
+        }
+
+        $('#total').val(parseFloat($('#TaxAmount').val()) + parseFloat($('#TaxRate').val()));
+        $('#TaxAmount').on("input", function () {
+            var dInput = this.value;
+            if (dInput != '') {
+                $('#total').val((parseFloat(dInput) + ((parseFloat(dInput) / 100) * parseFloat($('#TaxRate').val()))));
+            } else {
+                $('#total').val($('#TaxRate').val());
+            }
+        });
+
+        $('#ddlsalesCategory').change(function () {
+            $.ajax({
+                type: "post",
+                url: "/Home/GetTax",
+                data: { SaleCategoryID: $('#ddlsalesCategory').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    $('#TaxRate').val(data.taxRate);
+                    $('#SaleCategoryID').val($('#ddlsalesCategory').val());
+                }
+            });
+        });
+
+        getcategory();
+        $('.SaleType').change(function () {
+            getcategory();
+        });
+
+
+        function getcategory() {
+            $.ajax({
+                type: "post",
+                url: "/Home/GetCategory",
+                data: { SaleTypeID: $('#SaleType').val(), PayerType: $('#TaxPayerType').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district = '<option >--Select--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        district = district + '<option value=' + data[i].id + '>' + data[i].category + '</option>';
+                    }
+                    $('#ddlsalesCategory').html(district);
+                    $('#ddlsalesCategory').val($('#SaleCategoryID').val());
+                }
+            });
+        }
+    });
+</script> 
