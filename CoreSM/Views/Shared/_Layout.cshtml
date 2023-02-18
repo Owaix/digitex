@@ -111,30 +111,39 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="" href="/Home/Index">
+                            <a style="color:black" class="activemenudash" href="/Home/Index">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
-                        <li>
-                            <a href="/Invoice">
-                                <i class="fas fa-chart-bar"></i>Invoice
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Payment">
-                                <i class="fas fa-chart-bar"></i>Payment
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Home/TaxList">
-                                <i class="fas fa-table"></i>Tax
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/UserList">
-                                <i class="far fa-check-square"></i>Add User
-                            </a>
-                        </li>
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("IsInvoice") == "True")
+                        {
+                            <li>
+                                <a class="activemenuInv" href="/Invoice">
+                                    <i class="fas fa-chart-bar"></i>Invoice
+                                </a>
+                            </li>
+                        }
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("IsPayment") == "True")
+                        {
+                            <li>
+                                <a class="activemenupay" href="/Payment">
+                                    <i class="fas fa-chart-bar"></i>Payment
+                                </a>
+                            </li>
+                        }
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("Username") == "admin")
+                        {
+                            <li>
+                                <a class="activemenutax" href="/Home/TaxList">
+                                    <i class="fas fa-table"></i>Tax
+                                </a>
+                            </li>
+                            <li>
+                                <a class="activemenuuser" href="/UserList">
+                                    <i class="far fa-check-square"></i>Add User
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </nav>
             </div>
@@ -284,7 +293,7 @@
                                                 <div class="content">
                                                     <h5 class="name">
                                                         <a href="#">@HttpContextAccessor.HttpContext.Session.GetString("Username")</a>
-                                                    </h5>                                                    
+                                                    </h5>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">

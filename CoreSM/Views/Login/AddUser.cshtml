@@ -6,6 +6,11 @@
             font-size: 13px;
         }
     }
+
+    .activemenuuser {
+        background-color: lightgray;
+        padding-left: 10px !important;
+    }
 </style>
 <div class="container-fluid">
     <div class="row">
@@ -32,6 +37,28 @@
                                            data-val-cc-exp="Please enter a valid month and year" placeholder=""
                                            autocomplete="cc-exp">
                                     <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="IsInvoice" class="control-label mb-1">Is Invoice</label>
+                                    <br />
+                                    <label for="inline-checkbox1" class="form-check-label ">
+                                        .
+                                        <input asp-for="IsInvoice" style="margin-left: 25px;" type="checkbox" class="form-check-input">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="IsPayment" class="control-label mb-1">Is Payment</label>
+                                    <br />
+                                    <label for="inline-checkbox1" class="form-check-label ">
+                                        .
+                                        <input asp-for="IsPayment" style="margin-left: 25px;" type="checkbox" class="form-check-input">
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-4">

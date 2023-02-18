@@ -106,6 +106,10 @@ namespace CoreSM.Migrations
 
                     b.Property<bool>("IsActive");
 
+                    b.Property<bool>("IsInvoice");
+
+                    b.Property<bool>("IsPayment");
+
                     b.Property<string>("Password");
 
                     b.Property<string>("UserName");

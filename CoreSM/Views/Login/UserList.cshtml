@@ -19,6 +19,8 @@
                                         <th>User ID</th>
                                         <th>User Name</th>
                                         <th>Password</th>
+                                        <th>Allow Invoice</th>
+                                        <th>Allow Payment</th>
                                         <th>Is Active</th>
                                         <th></th>
                                     </tr>
@@ -26,16 +28,18 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td>@item.UserID</td>
-                                            <td>@item.UserName</td>
-                                            <td>@item.Password</td>
-                                            <td>@item.IsActive</td>
-                                            <td>
-                                                <a target="_blank" href="/AddUser/@item.UserID"><img style="width: 24px;" src="~/images/icons8-edit-50.png" /></a>
-                                                <a id="delte" onclick="deletes(@item.UserID)"><img style="width: 24px;" src="~/images/icon/icons8-trash-can-50.png" /></a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>@item.UserID</td>
+                                        <td>@item.UserName</td>
+                                        <td>@item.Password</td>
+                                        <td>@item.IsInvoice</td>
+                                        <td>@item.IsPayment</td>
+                                        <td>@item.IsActive</td>
+                                        <td>
+                                            <a target="_blank" href="/AddUser/@item.UserID"><img style="width: 24px;" src="~/images/icons8-edit-50.png" /></a>
+                                            <a id="delte" onclick="deletes(@item.UserID)"><img style="width: 24px;" src="~/images/icon/icons8-trash-can-50.png" /></a>
+                                        </td>
+                                    </tr>
                                     }
                                 </tbody>
                             </table>

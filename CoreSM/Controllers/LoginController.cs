@@ -36,6 +36,8 @@ namespace CoreSM.Controllers
             {
                 HttpContext.Session.SetString("UserID", popularDevelopers.UserID.ToString());
                 HttpContext.Session.SetString("Username", popularDevelopers.UserName);
+                HttpContext.Session.SetString("IsPayment", popularDevelopers.IsPayment.ToString());
+                HttpContext.Session.SetString("IsInvoice", popularDevelopers.IsInvoice.ToString());
                 return RedirectToAction("Index", "Home", null);
             }
             return View(login);

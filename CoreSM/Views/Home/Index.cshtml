@@ -1,5 +1,11 @@
 ﻿@model CoreSM.Models.Dashboard
 
+<style>
+        .activemenudash{
+        background-color: lightgray;
+        padding-left: 10px !important;
+    }
+</style>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -22,7 +28,7 @@
                             </div>
                             <div class="text">
                                 <h2>@Model.WITHHOLDINGTAXPAID</h2>
-                                <span >WITHHOLDING TAX PAYABLE</span>
+                                <span >WITHHOLDING TAX PAID</span>
                             </div>
                         </div>
                         <div class="overview-chart">
@@ -42,7 +48,7 @@
                             </div>
                             <div class="text">
                                 <h2>@Model.ADVANCETAXPAID</h2>
-                                <span>ADVANCE TAX PAID</span>
+                                <span>ADVANCE TAX PAYABLE</span>
                             </div>
                         </div>
                         <div class="overview-chart">

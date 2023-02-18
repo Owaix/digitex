@@ -1,4 +1,3 @@
-C:\Users\HP\source\repos\CoreSM\CoreSM\obj\Debug\netcoreapp2.1\CoreSM.csprojAssemblyReference.cache
 C:\Users\HP\source\repos\CoreSM\CoreSM\obj\Debug\netcoreapp2.1\CoreSM.csproj.CoreCompileInputs.cache
 C:\Users\HP\source\repos\CoreSM\CoreSM\obj\Debug\netcoreapp2.1\CoreSM.RazorAssemblyInfo.cache
 C:\Users\HP\source\repos\CoreSM\CoreSM\obj\Debug\netcoreapp2.1\CoreSM.RazorAssemblyInfo.cs
