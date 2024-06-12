@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CoreSM.Models.Invoice>
+@using System;
+@{
+    ViewData["Title"] = "AdvanceTaxPaid";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">Advance Tax Paid</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="invoice" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice Date</th>
+                                        <th>CNIC</th>
+                                        <th>Category</th>
+                                        <th>Tax Rate</th>
+                                        <th>Tax Withheld</th>
+                                        <th>Tax Amount</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.InvoiceDate.ToShortDateString()
+                                            </td>
+                                            <td>@item.CNIC</td>
+                                            <td>@item.SaleType</td>
+                                            <td>@item.TaxRate</td>
+                                            <td>@item.TaxWithheld</td>
+                                            <td>@item.TaxAmount</td>
+                                            <td>
+                                                <a target="_blank" href="/Invoice/@item.ID"><img style="width: 24px;" src="~/images/icons8-edit-50.png" /></a>
+                                                <a href="/RemoveInvoice/@item.ID"><img style="width: 24px;" src="~/images/icon/icons8-trash-can-50.png" /></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#invoice').DataTable();
+    });
+
+    function convertdate(date) {
+        var fullDate = new Date(date);
+        var twoDigitMonth = fullDate.getMonth() + "";
+        if (twoDigitMonth.length == 1)
+            twoDigitMonth = "0" + twoDigitMonth;
+        var twoDigitDate = fullDate.getDate() + "";
+        if (twoDigitDate.length == 1)
+            twoDigitDate = "0" + twoDigitDate;
+        var currentDate = twoDigitDate + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+        console.log(currentDate);
+        return currentDate;
+    }
+</script>

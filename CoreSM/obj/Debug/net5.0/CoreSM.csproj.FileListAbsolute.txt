@@ -1,0 +1,11 @@
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.csproj.AssemblyReference.cache
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.AssemblyInfoInputs.cache
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.AssemblyInfo.cs
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.csproj.CoreCompileInputs.cache
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.MvcApplicationPartsAssemblyInfo.cache
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.TagHelpers.input.cache
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.TagHelpers.output.cache
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.dll
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\ref\CoreSM.dll
+D:\OneDrive - Constellation HomeBuilder Systems\Desktop\GPT\saad\digitex\CoreSM\obj\Debug\net5.0\CoreSM.pdb

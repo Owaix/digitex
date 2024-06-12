@@ -32,7 +32,7 @@ namespace CoreSM
 
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddDbContext<SalesDbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("AppDb"),
